@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 390" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="390" fill="#ffffff"/>
+  <text x="500" y="28" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">Investigation workflow</text>
+  <text x="500" y="48" text-anchor="middle" font-size="11" fill="#64748b">intake → triage → (knowledge ∥ architecture) → RCA → confidence gate → recommendation → communication → review</text>
+
+  <!-- top row -->
+  <rect x="30" y="86" width="150" height="54" rx="8" fill="#eef2f7" stroke="#334155"/>
+  <text x="105" y="110" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f172a">Intake</text>
+  <text x="105" y="127" text-anchor="middle" font-size="9.5" fill="#475569">normalize · classify</text>
+
+  <rect x="215" y="86" width="150" height="54" rx="8" fill="#eef2f7" stroke="#334155"/>
+  <text x="290" y="110" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f172a">Triage gate</text>
+  <text x="290" y="127" text-anchor="middle" font-size="9.5" fill="#475569">drop / proceed</text>
+
+  <rect x="400" y="50" width="150" height="54" rx="8" fill="#eef2f7" stroke="#334155"/>
+  <text x="475" y="74" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f172a">Knowledge</text>
+  <text x="475" y="91" text-anchor="middle" font-size="9.5" fill="#475569">RAG · cited</text>
+
+  <rect x="400" y="128" width="150" height="54" rx="8" fill="#eef2f7" stroke="#334155"/>
+  <text x="475" y="152" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f172a">Architecture</text>
+  <text x="475" y="169" text-anchor="middle" font-size="9.5" fill="#475569">CMDB · changes</text>
+
+  <rect x="590" y="86" width="150" height="54" rx="8" fill="#dbeafe" stroke="#1d4ed8"/>
+  <text x="665" y="110" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1e3a8a">RCA</text>
+  <text x="665" y="127" text-anchor="middle" font-size="9.5" fill="#1d4ed8">ranked · graded</text>
+
+  <!-- confidence gate diamond -->
+  <polygon points="810,73 866,113 810,153 754,113" fill="#fef3c7" stroke="#b45309"/>
+  <text x="810" y="109" text-anchor="middle" font-size="10" font-weight="600" fill="#7c2d12">RCA</text>
+  <text x="810" y="123" text-anchor="middle" font-size="10" fill="#92400e">confidence?</text>
+
+  <!-- bottom row -->
+  <rect x="590" y="250" width="150" height="54" rx="8" fill="#eef2f7" stroke="#334155"/>
+  <text x="665" y="274" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f172a">Recommendation</text>
+  <text x="665" y="291" text-anchor="middle" font-size="9.5" fill="#475569">risk · approval tags</text>
+
+  <rect x="400" y="250" width="150" height="54" rx="8" fill="#eef2f7" stroke="#334155"/>
+  <text x="475" y="274" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f172a">Communication</text>
+  <text x="475" y="291" text-anchor="middle" font-size="9.5" fill="#475569">drafts only</text>
+
+  <rect x="180" y="250" width="170" height="54" rx="8" fill="#ede9fe" stroke="#6d28d9"/>
+  <text x="265" y="272" text-anchor="middle" font-size="12.5" font-weight="600" fill="#5b21b6">Human review</text>
+  <text x="265" y="291" text-anchor="middle" font-size="9.5" fill="#6d28d9">interrupt: approve / reject</text>
+
+  <circle cx="80" cy="277" r="22" fill="#e2e8f0" stroke="#475569"/>
+  <text x="80" y="281" text-anchor="middle" font-size="11" font-weight="600" fill="#334155">END</text>
+
+  <!-- arrows -->
+  <path d="M180,113 L213,113" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M365,113 L398,77" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M365,113 L398,155" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M550,77 L588,103" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M550,155 L588,123" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M740,113 L752,113" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <!-- gate -> recommendation (recommend) -->
+  <path d="M810,153 L665,248" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="752" y="205" text-anchor="middle" font-size="10" fill="#15803d">recommend</text>
+
+  <!-- gate -> human_review (escalate), orthogonal route -->
+  <path d="M810,153 L810,200 L265,200 L265,248" fill="none" stroke="#b45309" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
+  <text x="520" y="193" text-anchor="middle" font-size="10" fill="#b45309">escalate · low / speculative</text>
+
+  <path d="M590,277 L552,277" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M400,277 L352,277" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M180,277 L104,277" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <text x="500" y="372" text-anchor="middle" font-size="11" fill="#64748b">Knowledge and Architecture run in parallel; the graph pauses at the human-review interrupt. Intake failure / "drop" triage also route to review.</text>
+</svg>

@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+          pip install -e .
+      - name: Import-graph check (no mutating tools, names resolve)
+        run: python tools/check_imports.py
+      - name: Compile
+        run: python -m compileall -q agents contracts db libs mcp_connectors services
+      - name: Unit tests
+        run: pytest

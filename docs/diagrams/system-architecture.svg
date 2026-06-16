@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 585" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="980" height="585" fill="#ffffff"/>
+  <text x="490" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">System architecture</text>
+  <text x="490" y="54" text-anchor="middle" font-size="12" fill="#64748b">Advisory-only · read-only by construction</text>
+
+  <!-- platform panel -->
+  <rect x="250" y="72" width="700" height="460" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="6 4"/>
+  <text x="264" y="92" font-size="11" fill="#64748b">Platform · isolated AWS account / region</text>
+
+  <!-- external left column -->
+  <rect x="30" y="90" width="180" height="84" rx="8" fill="#eef2f7" stroke="#334155"/>
+  <text x="120" y="126" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f172a">Incident sources</text>
+  <text x="120" y="148" text-anchor="middle" font-size="10" fill="#475569">PagerDuty · ServiceNow · Slack</text>
+
+  <rect x="30" y="230" width="180" height="84" rx="8" fill="#eef2f7" stroke="#334155"/>
+  <text x="120" y="266" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f172a">Operators</text>
+  <text x="120" y="288" text-anchor="middle" font-size="10" fill="#475569">SSO / JWT · RBAC roles</text>
+
+  <!-- middle column -->
+  <rect x="285" y="120" width="190" height="64" rx="8" fill="#eef2f7" stroke="#334155"/>
+  <text x="380" y="147" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f172a">webhook-ingress</text>
+  <text x="380" y="167" text-anchor="middle" font-size="10" fill="#475569">HMAC verify · normalize</text>
+
+  <rect x="285" y="230" width="190" height="64" rx="8" fill="#eef2f7" stroke="#334155"/>
+  <text x="380" y="257" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f172a">API (FastAPI)</text>
+  <text x="380" y="277" text-anchor="middle" font-size="10" fill="#475569">OIDC · RBAC + ABAC</text>
+
+  <rect x="285" y="340" width="190" height="64" rx="8" fill="#eef2f7" stroke="#334155"/>
+  <text x="380" y="367" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f172a">Orchestrator (LangGraph)</text>
+  <text x="380" y="387" text-anchor="middle" font-size="10" fill="#475569">6-agent investigation</text>
+
+  <!-- right column -->
+  <rect x="560" y="230" width="190" height="64" rx="8" fill="#fef3c7" stroke="#b45309"/>
+  <text x="655" y="257" text-anchor="middle" font-size="12.5" font-weight="600" fill="#7c2d12">MCP gateway</text>
+  <text x="655" y="277" text-anchor="middle" font-size="10" fill="#92400e">allowlist · READ-ONLY</text>
+
+  <rect x="560" y="340" width="190" height="64" rx="8" fill="#eef2f7" stroke="#334155"/>
+  <text x="655" y="363" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0f172a">Read-only connectors</text>
+  <text x="655" y="383" text-anchor="middle" font-size="10" fill="#475569">PagerDuty/ServiceNow/Confluence/Obs</text>
+
+  <!-- data layer -->
+  <rect x="285" y="450" width="190" height="72" rx="8" fill="#e0e7ff" stroke="#3730a3"/>
+  <text x="380" y="480" text-anchor="middle" font-size="12.5" font-weight="600" fill="#312e81">PostgreSQL</text>
+  <text x="380" y="500" text-anchor="middle" font-size="10" fill="#3730a3">RLS + WORM audit + pgvector</text>
+
+  <rect x="560" y="450" width="190" height="72" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="655" y="480" text-anchor="middle" font-size="12.5" font-weight="600" fill="#14532d">Amazon Bedrock</text>
+  <text x="655" y="500" text-anchor="middle" font-size="10" fill="#166534">in-account · redacted prompts</text>
+
+  <!-- arrows -->
+  <path d="M210,132 L283,150" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M210,272 L283,258" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M380,184 L380,228" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="388" y="210" font-size="10" fill="#64748b">NormalizedIncident</text>
+  <path d="M380,294 L380,338" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M475,360 L558,266" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="485" y="322" font-size="10" fill="#64748b">read-only</text>
+  <path d="M655,294 L655,338" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M380,404 L380,448" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M475,386 L558,468" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="487" y="452" font-size="10" fill="#64748b">redacted</text>
+
+  <text x="490" y="562" text-anchor="middle" font-size="11" fill="#64748b">All external access is read-only; the platform writes only to its own datastore (RCA doc, state, audit log).</text>
+</svg>

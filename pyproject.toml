@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rca-platform"
+version = "0.1.0"
+description = "AI-powered, advisory-only Root Cause Analysis & Incident Troubleshooting platform (PoC)"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.6",
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "SQLAlchemy[asyncio]>=2.0",
+    "asyncpg>=0.29",
+    "langgraph>=0.2",
+    "PyJWT[crypto]>=2.8",
+    "boto3>=1.34",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+
+# Flat top-level package layout. NOTE: the connector package is `mcp_connectors`, deliberately
+# renamed from `mcp` so it does not collide with the official `mcp` SDK distribution on PyPI.
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agents*", "contracts*", "db*", "libs*", "mcp_connectors*", "services*"]
+exclude = ["*.tests", "*.tests.*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = "-q"
+testpaths = ["agents", "libs", "mcp_connectors", "services"]
