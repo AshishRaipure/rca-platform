@@ -107,8 +107,10 @@ class ConfluenceClient:
         return self._backoff(attempt)
 
     async def _get_list(self, path: str, *, params: Optional[dict[str, Any]] = None,
-                        max_items: Optional[int] = None, timeout_s: Optional[float] = None) -> list:
-        cap = max_items or self.config.max_items
+                        max_items: Optional[int] = None, limit: Optional[int] = None,
+                        timeout_s: Optional[float] = None) -> list:
+        # Accept either `max_items` or `limit` as the caller-provided cap.
+        cap = limit or max_items or self.config.max_items
         items: list = []
         start = 0
         pages = 0

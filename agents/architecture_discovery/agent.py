@@ -68,6 +68,22 @@ class ArchitectureDiscoveryAgent:
         deps: list[DependencyEdge] = []
         changes: list[RecentChange] = []
 
+        # If the MCP gateway is unavailable, the agent should explicitly degrade
+        # rather than constructing a partially-populated context from missing data.
+        if self._gateway is None:
+            warnings.append("gateway unavailable")
+            ctx = ArchitectureContext(
+                impacted=[],
+                dependencies=[],
+                recent_changes=[],
+                summary=self._summary([], [], []),
+                topology_freshness="unknown",
+                degraded=True,
+                warnings=warnings,
+            )
+            await self._safe_audit(request, request_id, ctx)
+            return ctx
+
         for name in request.affected_systems[: self._config.max_systems]:
             ci = await self._call("servicenow.get_cmdb_ci", {"name": name}, scope, request_id, warnings)
             rec = _as_record(ci)

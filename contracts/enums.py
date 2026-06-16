@@ -11,6 +11,7 @@ from enum import Enum
 class SourceSystem(str, Enum):
     pagerduty = "pagerduty"
     servicenow = "servicenow"
+    confluence = "confluence"
     slack = "slack"
     jira = "jira"
     github = "github"
